@@ -16,9 +16,10 @@ import reducers from './reducers';
 import './index.css';
 
 const createStoreWithMiddleware = applyMiddleware(ReduxPromise)(createStore);
+const reduxExtension = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
 
 ReactDOM.render(
-  <Provider store={createStoreWithMiddleware(reducers, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())}>
+  <Provider store={createStoreWithMiddleware(reducers, reduxExtension)}>
     <Router>
       <div>
         <Route exact path="/" component={App} />
