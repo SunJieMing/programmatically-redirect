@@ -8,7 +8,7 @@ class App extends Component {
       <div className="App">
         <Link to="/items">Items</Link>
         <br/>
-        <Link to="/new-item">New Items</Link>
+        <Link to="/new-item">Add a new item</Link>
       </div>
     );
   }

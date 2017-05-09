@@ -9,18 +9,20 @@ class NewItem extends Component {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+
   handleSubmit(formObject) {
-    this.props.newItem(formObject).then(() => {
-      this.props.history.push('/items');
+    this.props.newItem(formObject).then((action) => {
+      this.props.history.replace(`/items/${action.payload.data.id}`);
     });
   }
+
   render() {
     return (
-      <div>
-        <NewItemForm onSubmit={this.handleSubmit} />
-      </div>
+      <NewItemForm onSubmit={this.handleSubmit} />
     );
   }
 }
 
-export default connect(null, { newItem })(withRouter(NewItem));
+NewItem = withRouter(NewItem);
+
+export default connect(null, { newItem })(NewItem);

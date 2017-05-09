@@ -11,16 +11,16 @@ export const newItem = (item) => {
   };
 };
 
-export const setActiveItem = (item) => {
+export const setActiveItem = (id) => {
+  const promise = axios.get(`http://localhost:5000/items/${id}`);
   return {
     type: SET_ACTIVE_ITEM,
-    payload: item,
+    payload: promise,
   };
 };
 
 export const getItems = () => {
   const promise = axios.get('http://localhost:5000/items');
-  console.log('promise');
   return {
     type: GET_ITEMS,
     payload: promise,
